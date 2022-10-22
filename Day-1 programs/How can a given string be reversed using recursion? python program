@@ -1,0 +1,10 @@
+def reverse_string(my_string):
+   if len(my_string) == 0:
+      return my_string
+   else:
+      return reverse_string(my_string[1:]) + my_string[0]
+my_str = str(input("Enter the string that needs to be reversed : "))
+print("The string is :")
+print(my_str)
+print("The reversed string is :")
+print(reverse_string(my_str))
