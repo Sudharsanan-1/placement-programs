@@ -1,0 +1,30 @@
+class TreeNode:
+   def __init__(self, value):
+      self.val = value
+      self.left = None
+      self.right = None
+class Solution:
+   def solve(self, root):
+      inorder = []
+      stack = []
+      while True:
+         if root:
+            stack.append(root)
+            root = root.left
+         elif stack:
+            root = stack.pop()
+            inorder.append(root.val)
+            root = root.right
+         else:
+            break
+      return inorder
+
+ob = Solution()
+root = TreeNode(13)
+root.left = TreeNode(12)
+root.right = TreeNode(14)
+root.right.left = TreeNode(16)
+root.right.right = TreeNode(22)
+root.right.left.left = TreeNode(4)
+root.right.left.right = TreeNode(7)
+print(ob.solve(root))
