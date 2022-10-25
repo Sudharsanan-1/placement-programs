@@ -1,0 +1,55 @@
+class Node:
+   def __init__(self, data):
+      self.data = data
+      self.next = None
+
+class my_linked_list:
+   def __init__(self):
+      self.head = None
+      self.last_node = None
+
+   def add_value(self, my_data):
+      if self.last_node is None:
+         self.head = Node(my_data)
+         self.last_node = self.head
+      else:
+         self.last_node.next = Node(my_data)
+         self.last_node = self.last_node.next
+
+   def print_it(self):
+      curr = self.head
+      while curr is not None:
+         print(curr.data)
+         curr = curr.next
+
+   def find_index_val(self, my_key):
+      curr = self.head
+
+      index_val = 0
+      while curr:
+         if curr.data == my_key:
+            return index_val
+         curr = curr.next
+         index_val = index_val + 1
+      return -1
+
+my_instance = my_linked_list()
+my_list = [67, 4, 78, 98, 32, 0, 11, 8]
+for data in my_list:
+   my_instance.add_value(data)
+print('The linked list is : ')
+my_instance.print_it()
+print()
+
+my_key = int(input('What value would you search for? '))
+index_val = my_instance.find_index_val(my_key)
+if index_val == -1:
+   print(str(my_key) + ' was not found.')
+else:
+   print('Element was found at index ' + str(index_val) + '.')
+n = int(input('How many elements would you wish to add ? '))
+for i in range(n):
+   data = int(input('Enter data : '))
+   my_instance.add_value(data)
+print('The linked list is : ')
+my_instance.print_it()
