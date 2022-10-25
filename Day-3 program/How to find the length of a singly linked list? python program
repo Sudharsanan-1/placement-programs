@@ -1,0 +1,22 @@
+class ListNode:
+   def __init__(self, data, next = None):
+      self.val = data
+      self.next = next
+def make_list(elements):
+   head = ListNode(elements[0])
+   for element in elements[1:]:
+      ptr = head
+      while ptr.next:
+         ptr = ptr.next
+         ptr.next = ListNode(element)
+   return head
+class Solution:
+   def solve(self, node):
+      count = 0
+      while node:
+         count +=1
+         node=node.next
+      return count
+ob = Solution()
+head = make_list([2,4,5,7,8,9,3])
+print(ob.solve(head))
