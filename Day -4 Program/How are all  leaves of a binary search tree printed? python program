@@ -1,0 +1,20 @@
+class TreeNode:
+   def __init__(self, data, left = None, right = None):
+      self.val = data
+      self.left = left
+      self.right = right
+class Solution:
+   def solve(self, n):
+      if not n:
+         return 0, 0
+      if not n.left and not n.right:
+         return 1, 0
+      left, right = self.solve(n.left), self.solve(n.right)
+      return left[0] + right[0], 1 + left[1] + right[1]
+ob = Solution()
+root = TreeNode(6)
+root.left = TreeNode(2)
+root.right = TreeNode(6)
+root.right.left = TreeNode(10)
+root.right.right = TreeNode(2)
+print(ob.solve(root))
